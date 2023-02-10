@@ -1,48 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>데브옵스 엔지니어 데이비드_우</title>
-  <style>
-    body {
-      background-color: #F5F5DC;
-    }
-    h1 {
-      color: #006400;
-      text-align: center;
-      text-shadow: 2px 2px #FFF;
-      font-family: 'Open Sans', sans-serif;
-    }
-    p {
-      font-family: 'Lato', sans-serif;
-      font-size: 20px;
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    #cta {
-      background-color: #228B22;
-      color: #FFFFFF;
-      padding: 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 18px;
-      margin-top: 30px;
-      border-radius: 5px;
-    }
-    #cta:hover {
-      background-color: #3E8E41;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>데브옵스 부트캠프에 온 것을 환영합니다</h1>
-    <p>다같이 열심히 공부해요!</p>
-    <a href="https://www.codestates.com/course/devops" id="cta">데브옵스 신청하기</a>
-    <a href="https://www.codestates.com/course/frontend-engineering" id="cta">데브옵스 더 알아보기</a>
-  </div>
-</body>
+  <head>
+    <style>
+      .result {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    Number of players:
+    <input type="number" id="players" value="5" min="2" max="10">
+    <button onclick="startGame()">Start Game</button>
+    <div id="result"></div>
+    <script>
+      function startGame() {
+        var sticks = 21;
+        var playerCount = document.getElementById("players").value;
+        var players = [];
+        for (var i = 0; i < playerCount; i++) {
+          players.push("Player " + (i + 1));
+        }
+        var result = document.getElementById("result");
+        var currentPlayer = 0;
+        while (sticks > 0) {
+          var picked = Math.floor(Math.random() * 3) + 1;
+          sticks -= picked;
+          result.innerHTML += players[currentPlayer] + " picked " + picked + " sticks.<br>";
+          if (sticks <= 0) {
+            result.innerHTML += players[currentPlayer] + " lost the game.<br>";
+            break;
+          }
+          currentPlayer = (currentPlayer + 1) % players.length;
+        }
+      }
+    </script>
+  </body>
 </html>
