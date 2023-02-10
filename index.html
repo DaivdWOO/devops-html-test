@@ -2,37 +2,29 @@
 <html>
   <head>
     <style>
-      .result {
-        font-size: 20px;
+      body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
       }
     </style>
   </head>
   <body>
-    Number of players:
-    <input type="number" id="players" value="5" min="2" max="10">
-    <button onclick="startGame()">Start Game</button>
-    <div id="result"></div>
     <script>
-      function startGame() {
-        var sticks = 21;
-        var playerCount = document.getElementById("players").value;
-        var players = [];
-        for (var i = 0; i < playerCount; i++) {
-          players.push("Player " + (i + 1));
-        }
-        var result = document.getElementById("result");
-        var currentPlayer = 0;
-        while (sticks > 0) {
-          var picked = Math.floor(Math.random() * 3) + 1;
-          sticks -= picked;
-          result.innerHTML += players[currentPlayer] + " picked " + picked + " sticks.<br>";
-          if (sticks <= 0) {
-            result.innerHTML += players[currentPlayer] + " lost the game.<br>";
-            break;
-          }
-          currentPlayer = (currentPlayer + 1) % players.length;
-        }
-      }
+      const catImages = [
+        "https://www.google.com/image1.jpg",
+        "https://www.google.com/image2.jpg",
+        "https://www.google.com/image3.jpg",
+        "https://www.google.com/image4.jpg",
+        "https://www.google.com/image5.jpg",
+      ];
+
+      let currentImage = 0;
+      setInterval(() => {
+        document.body.style.backgroundImage = `url('${catImages[currentImage]}')`;
+        currentImage = (currentImage + 1) % catImages.length;
+      }, 500);
     </script>
   </body>
 </html>
+In this code, th
